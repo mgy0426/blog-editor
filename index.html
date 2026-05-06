@@ -31,6 +31,81 @@
     flex-direction: column;
   }
 
+  /* ── 비밀번호 화면 ── */
+  #lockScreen {
+    position: fixed;
+    inset: 0;
+    background: var(--toolbar-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #lockScreen .lock-box {
+    background: #222;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 40px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    min-width: 320px;
+  }
+
+  #lockScreen .lock-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent-light);
+    margin-bottom: 4px;
+  }
+
+  #lockScreen .lock-sub {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 8px;
+  }
+
+  #lockScreen input {
+    width: 100%;
+    padding: 10px 16px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background: #111;
+    color: #eee;
+    font-size: 15px;
+    font-family: 'Noto Sans KR', sans-serif;
+    outline: none;
+    text-align: center;
+    letter-spacing: 0.1em;
+  }
+  #lockScreen input:focus { border-color: var(--accent-light); }
+
+  #lockScreen button {
+    width: 100%;
+    padding: 10px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  #lockScreen button:hover { background: var(--accent-light); }
+
+  #lockError {
+    color: #e74c3c;
+    font-size: 13px;
+    display: none;
+  }
+
   /* ── Header ── */
   header {
     background: var(--toolbar-bg);
@@ -50,15 +125,10 @@
     font-family: 'Noto Serif KR', serif;
     font-size: 17px;
     font-weight: 700;
-    letter-spacing: 0.03em;
     color: var(--accent-light);
   }
 
-  .header-actions {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
+  .header-actions { display: flex; gap: 8px; align-items: center; }
 
   .btn {
     padding: 6px 16px;
@@ -70,18 +140,9 @@
     cursor: pointer;
     transition: all 0.15s;
   }
-
-  .btn-save {
-    background: var(--accent);
-    color: #fff;
-  }
+  .btn-save { background: var(--accent); color: #fff; }
   .btn-save:hover { background: var(--accent-light); }
-
-  .btn-new {
-    background: transparent;
-    color: var(--toolbar-text);
-    border: 1px solid #444;
-  }
+  .btn-new { background: transparent; color: var(--toolbar-text); border: 1px solid #444; }
   .btn-new:hover { border-color: var(--accent-light); color: var(--accent-light); }
 
   /* ── Layout ── */
@@ -96,10 +157,7 @@
   }
 
   /* ── Sidebar ── */
-  .sidebar {
-    width: 220px;
-    flex-shrink: 0;
-  }
+  .sidebar { width: 220px; flex-shrink: 0; }
 
   .sidebar-title {
     font-size: 11px;
@@ -111,22 +169,16 @@
     padding-left: 4px;
   }
 
-  .post-list {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
+  .post-list { display: flex; flex-direction: column; gap: 4px; }
 
   .post-item {
     padding: 9px 12px;
     border-radius: 6px;
     cursor: pointer;
-    border: 1px solid transparent;
+    border: 1px solid var(--border);
     transition: all 0.12s;
     background: var(--paper);
-    border-color: var(--border);
   }
-
   .post-item:hover { border-color: var(--accent-light); }
   .post-item.active { border-color: var(--accent); background: #e8f5ee; }
 
@@ -139,17 +191,12 @@
     margin-bottom: 3px;
   }
 
-  .post-item-date {
-    font-size: 11px;
-    color: var(--ink-light);
-  }
+  .post-item-date { font-size: 11px; color: var(--ink-light); }
 
   .post-item-delete {
     float: right;
     color: #bbb;
     font-size: 14px;
-    line-height: 1;
-    padding: 0 2px;
     background: none;
     border: none;
     cursor: pointer;
@@ -157,20 +204,10 @@
   }
   .post-item-delete:hover { color: var(--danger); }
 
-  .no-posts {
-    font-size: 12px;
-    color: #aaa;
-    padding: 8px 4px;
-    font-style: italic;
-  }
+  .no-posts { font-size: 12px; color: #aaa; padding: 8px 4px; font-style: italic; }
 
-  /* ── Editor area ── */
-  .editor-wrapper {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-  }
+  /* ── Editor ── */
+  .editor-wrapper { flex: 1; display: flex; flex-direction: column; min-width: 0; }
 
   .title-input {
     width: 100%;
@@ -182,7 +219,6 @@
     border: none;
     border-bottom: 2px solid var(--border);
     padding: 8px 4px 12px;
-    margin-bottom: 0;
     outline: none;
     transition: border-color 0.2s;
   }
@@ -203,124 +239,58 @@
     z-index: 10;
   }
 
-  .toolbar-sep {
-    width: 1px;
-    height: 22px;
-    background: var(--border);
-    margin: 0 4px;
-  }
+  .toolbar-sep { width: 1px; height: 22px; background: var(--border); margin: 0 4px; }
 
   .tb {
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background: transparent;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    color: var(--ink);
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    border: none; background: transparent; border-radius: 4px;
+    cursor: pointer; font-size: 14px; color: var(--ink);
     transition: all 0.1s;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-weight: 500;
+    font-family: 'Noto Sans KR', sans-serif; font-weight: 500;
   }
   .tb:hover { background: #eee; }
-  .tb.active { background: var(--accent); color: #fff; }
-
-  .tb-label {
-    padding: 0 10px;
-    font-size: 12px;
-    width: auto;
-  }
+  .tb-label { padding: 0 10px; font-size: 12px; width: auto; }
 
   .font-size-select {
-    height: 32px;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    font-size: 12px;
-    font-family: 'Noto Sans KR', sans-serif;
-    padding: 0 6px;
-    background: white;
-    color: var(--ink);
-    cursor: pointer;
+    height: 32px; border: 1px solid var(--border); border-radius: 4px;
+    font-size: 12px; font-family: 'Noto Sans KR', sans-serif;
+    padding: 0 6px; background: white; color: var(--ink); cursor: pointer;
   }
 
   .color-input {
-    width: 32px;
-    height: 32px;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 2px;
-    cursor: pointer;
-    background: white;
+    width: 32px; height: 32px; border: 1px solid var(--border);
+    border-radius: 4px; padding: 2px; cursor: pointer; background: white;
   }
 
-  /* ── Content editable ── */
+  /* ── Content ── */
   .editor-content {
-    flex: 1;
-    background: var(--paper);
-    padding: 24px 28px;
-    min-height: 500px;
+    flex: 1; background: var(--paper);
+    padding: 24px 28px; min-height: 500px;
     outline: none;
     font-family: 'Noto Sans KR', sans-serif;
-    font-size: 15px;
-    line-height: 1.9;
-    color: var(--ink);
+    font-size: 15px; line-height: 1.9; color: var(--ink);
     caret-color: var(--accent);
-    box-shadow: var(--shadow);
-    border-radius: 0 0 8px 8px;
+    box-shadow: var(--shadow); border-radius: 0 0 8px 8px;
   }
-
-  .editor-content:empty::before {
-    content: '여기에 글을 작성하세요...';
-    color: #ccc;
-    pointer-events: none;
-  }
-
-  .editor-content img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 12px 0;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: opacity 0.15s;
-  }
-  .editor-content img:hover { opacity: 0.9; }
-  .editor-content img.selected { outline: 2px solid var(--accent); }
-
-  .editor-content blockquote {
-    border-left: 3px solid var(--accent);
-    margin: 12px 0;
-    padding: 4px 16px;
-    color: var(--ink-light);
-    font-style: italic;
-  }
+  .editor-content:empty::before { content: '여기에 글을 작성하세요...'; color: #ccc; pointer-events: none; }
+  .editor-content img { max-width: 100%; height: auto; display: block; margin: 12px 0; border-radius: 4px; }
+  .editor-content blockquote { border-left: 3px solid var(--accent); margin: 12px 0; padding: 4px 16px; color: var(--ink-light); font-style: italic; }
 
   /* ── Toast ── */
   .toast {
-    position: fixed;
-    bottom: 28px;
-    left: 50%;
+    position: fixed; bottom: 28px; left: 50%;
     transform: translateX(-50%) translateY(80px);
-    background: var(--toolbar-bg);
-    color: var(--toolbar-text);
-    padding: 10px 24px;
-    border-radius: 24px;
-    font-size: 13px;
+    background: var(--toolbar-bg); color: var(--toolbar-text);
+    padding: 10px 24px; border-radius: 24px; font-size: 13px;
     border-left: 3px solid var(--accent-light);
     transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
-    pointer-events: none;
-    z-index: 999;
+    pointer-events: none; z-index: 999;
   }
   .toast.show { transform: translateX(-50%) translateY(0); }
 
-  /* ── Image upload area ── */
   #imageInput { display: none; }
 
-  /* ── Responsive ── */
   @media (max-width: 700px) {
     .sidebar { display: none; }
     .layout { padding: 12px; }
@@ -328,6 +298,20 @@
 </style>
 </head>
 <body>
+
+<!-- 비밀번호 화면 -->
+<div id="lockScreen">
+  <div class="lock-box">
+    <div class="lock-title">✎ 블로그 에디터</div>
+    <div class="lock-sub">비밀번호를 입력하세요</div>
+    <input type="password" id="pwInput" placeholder="비밀번호" onkeydown="if(event.key==='Enter') checkPw()">
+    <button onclick="checkPw()">입력</button>
+    <div id="lockError">비밀번호가 틀렸습니다</div>
+  </div>
+</div>
+
+<!-- 메인 앱 -->
+<div id="app" style="display:none; flex-direction:column; flex:1;">
 
 <header>
   <div class="logo">✎ 블로그 에디터</div>
@@ -338,18 +322,14 @@
 </header>
 
 <div class="layout">
-  <!-- Sidebar -->
   <aside class="sidebar">
     <div class="sidebar-title">저장된 글</div>
     <div class="post-list" id="postList"></div>
   </aside>
 
-  <!-- Editor -->
   <div class="editor-wrapper">
     <input type="text" class="title-input" id="titleInput" placeholder="제목을 입력하세요">
-
     <div class="toolbar">
-      <!-- Font size -->
       <select class="font-size-select" onchange="execCmd('fontSize', this.value); this.blur()">
         <option value="">크기</option>
         <option value="1">10px</option>
@@ -359,59 +339,166 @@
         <option value="5">24px</option>
         <option value="6">32px</option>
       </select>
-
       <div class="toolbar-sep"></div>
-
-      <!-- Format -->
-      <button class="tb" title="굵게 (Ctrl+B)" onclick="execCmd('bold')"><b>B</b></button>
-      <button class="tb" title="기울임 (Ctrl+I)" onclick="execCmd('italic')"><i>I</i></button>
-      <button class="tb" title="밑줄 (Ctrl+U)" onclick="execCmd('underline')"><u>U</u></button>
+      <button class="tb" title="굵게" onclick="execCmd('bold')"><b>B</b></button>
+      <button class="tb" title="기울임" onclick="execCmd('italic')"><i>I</i></button>
+      <button class="tb" title="밑줄" onclick="execCmd('underline')"><u>U</u></button>
       <button class="tb" title="취소선" onclick="execCmd('strikeThrough')"><s>S</s></button>
-
       <div class="toolbar-sep"></div>
-
-      <!-- Color -->
-      <input type="color" class="color-input" title="글자 색" value="#1a1a1a"
-        oninput="execCmd('foreColor', this.value)">
-
+      <input type="color" class="color-input" title="글자 색" value="#1a1a1a" oninput="execCmd('foreColor', this.value)">
       <div class="toolbar-sep"></div>
-
-      <!-- Align -->
-      <button class="tb tb-label" title="왼쪽 정렬" onclick="execCmd('justifyLeft')">≡</button>
-      <button class="tb tb-label" title="가운데 정렬" onclick="execCmd('justifyCenter')">≣</button>
-      <button class="tb tb-label" title="오른쪽 정렬" onclick="execCmd('justifyRight')">≡</button>
-
+      <button class="tb tb-label" title="왼쪽" onclick="execCmd('justifyLeft')">≡</button>
+      <button class="tb tb-label" title="가운데" onclick="execCmd('justifyCenter')">≣</button>
+      <button class="tb tb-label" title="오른쪽" onclick="execCmd('justifyRight')">≡</button>
       <div class="toolbar-sep"></div>
-
-      <!-- Lists -->
-      <button class="tb" title="순서 없는 목록" onclick="execCmd('insertUnorderedList')">•≡</button>
-      <button class="tb" title="순서 있는 목록" onclick="execCmd('insertOrderedList')">1≡</button>
-
+      <button class="tb" title="목록" onclick="execCmd('insertUnorderedList')">•≡</button>
+      <button class="tb" title="번호목록" onclick="execCmd('insertOrderedList')">1≡</button>
       <div class="toolbar-sep"></div>
-
-      <!-- Quote / HR -->
       <button class="tb tb-label" title="인용구" onclick="execCmd('formatBlock', 'blockquote')" style="font-size:16px">"</button>
       <button class="tb tb-label" title="구분선" onclick="insertHR()">—</button>
-
       <div class="toolbar-sep"></div>
-
-      <!-- Image -->
       <button class="tb tb-label" title="사진 첨부" onclick="document.getElementById('imageInput').click()" style="font-size:18px">🖼</button>
       <input type="file" id="imageInput" accept="image/*" multiple onchange="insertImages(this)">
     </div>
-
-    <div class="editor-content" id="editor" contenteditable="true"
-      onkeydown="handleKeydown(event)"></div>
+    <div class="editor-content" id="editor" contenteditable="true" onkeydown="handleKeydown(event)"></div>
   </div>
 </div>
+
+</div><!-- /app -->
 
 <div class="toast" id="toast"></div>
 
 <script>
+  // ── 설정 ──
+  const SUPABASE_URL = 'https://qllnwkqajklsxpslrndv.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFsbG53a3Fhamtsc3hwc2xybmR2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwMDc1NjYsImV4cCI6MjA5MzU4MzU2Nn0.8PtCFfXQLQgAWcp9uCS7Yqx3SFeQaMMj62nG8aKM2nM';
+  const PASSWORD = 'godwjd3254*'; // ← 여기 비밀번호 바꿔!
+
+  // ── 비밀번호 ──
+  function checkPw() {
+    const val = document.getElementById('pwInput').value;
+    if (val === PASSWORD) {
+      document.getElementById('lockScreen').style.display = 'none';
+      document.getElementById('app').style.display = 'flex';
+      loadPosts();
+    } else {
+      document.getElementById('lockError').style.display = 'block';
+      document.getElementById('pwInput').value = '';
+      document.getElementById('pwInput').focus();
+    }
+  }
+
+  // ── Supabase API ──
+  async function supabase(method, path, body) {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+      method,
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Content-Type': 'application/json',
+        'Prefer': method === 'POST' ? 'return=representation' : 'return=representation'
+      },
+      body: body ? JSON.stringify(body) : undefined
+    });
+    if (!res.ok) throw new Error(await res.text());
+    const text = await res.text();
+    return text ? JSON.parse(text) : null;
+  }
+
   // ── State ──
   let currentId = null;
+  let posts = [];
 
-  // ── execCommand wrapper ──
+  // ── 글 목록 불러오기 ──
+  async function loadPosts() {
+    try {
+      posts = await supabase('GET', 'posts?select=id,title,updated_at&order=updated_at.desc');
+      renderList();
+    } catch(e) {
+      showToast('글 목록을 불러오지 못했습니다');
+    }
+  }
+
+  // ── 글 불러오기 ──
+  async function loadPost(id) {
+    try {
+      const data = await supabase('GET', `posts?id=eq.${id}&select=*`);
+      if (!data || !data[0]) return;
+      const post = data[0];
+      currentId = post.id;
+      document.getElementById('titleInput').value = post.title;
+      document.getElementById('editor').innerHTML = post.content || '';
+      renderList();
+    } catch(e) {
+      showToast('글을 불러오지 못했습니다');
+    }
+  }
+
+  // ── 저장 ──
+  async function savePost() {
+    const title = document.getElementById('titleInput').value.trim() || '제목 없음';
+    const content = document.getElementById('editor').innerHTML;
+
+    try {
+      if (currentId) {
+        await supabase('PATCH', `posts?id=eq.${currentId}`, {
+          title, content, updated_at: new Date().toISOString()
+        });
+        showToast('저장되었습니다');
+      } else {
+        const data = await supabase('POST', 'posts', { title, content });
+        currentId = data[0].id;
+        showToast('저장되었습니다');
+      }
+      await loadPosts();
+    } catch(e) {
+      showToast('저장에 실패했습니다');
+    }
+  }
+
+  // ── 새 글 ──
+  function newPost() {
+    currentId = null;
+    document.getElementById('titleInput').value = '';
+    document.getElementById('editor').innerHTML = '';
+    document.getElementById('titleInput').focus();
+    renderList();
+  }
+
+  // ── 삭제 ──
+  async function deletePost(id, e) {
+    e.stopPropagation();
+    if (!confirm('이 글을 삭제할까요?')) return;
+    try {
+      await supabase('DELETE', `posts?id=eq.${id}`);
+      if (currentId === id) newPost();
+      await loadPosts();
+      showToast('삭제되었습니다');
+    } catch(e) {
+      showToast('삭제에 실패했습니다');
+    }
+  }
+
+  // ── 목록 렌더링 ──
+  function renderList() {
+    const list = document.getElementById('postList');
+    if (!posts || posts.length === 0) {
+      list.innerHTML = '<div class="no-posts">저장된 글이 없습니다</div>';
+      return;
+    }
+    list.innerHTML = posts.map(p => {
+      const active = p.id === currentId ? 'active' : '';
+      const date = new Date(p.updated_at).toLocaleDateString('ko-KR', {month:'short', day:'numeric', hour:'2-digit', minute:'2-digit'});
+      return `
+        <div class="post-item ${active}" onclick="loadPost(${p.id})">
+          <button class="post-item-delete" onclick="deletePost(${p.id}, event)">×</button>
+          <div class="post-item-title">${escHtml(p.title)}</div>
+          <div class="post-item-date">${date}</div>
+        </div>`;
+    }).join('');
+  }
+
+  // ── 에디터 기능 ──
   function execCmd(cmd, value = null) {
     document.getElementById('editor').focus();
     document.execCommand(cmd, false, value);
@@ -421,111 +508,20 @@
     execCmd('insertHTML', '<hr style="border:none;border-top:2px solid #ddd;margin:16px 0">');
   }
 
-  // ── Image insert ──
   function insertImages(input) {
-    const files = Array.from(input.files);
-    files.forEach(file => {
+    Array.from(input.files).forEach(file => {
       const reader = new FileReader();
-      reader.onload = e => {
-        execCmd('insertHTML', `<img src="${e.target.result}" alt="">`);
-      };
+      reader.onload = e => execCmd('insertHTML', `<img src="${e.target.result}" alt="">`);
       reader.readAsDataURL(file);
     });
     input.value = '';
   }
 
-  // ── Keyboard shortcuts ──
   function handleKeydown(e) {
     if (e.key === 's' && (e.ctrlKey || e.metaKey)) {
       e.preventDefault();
       savePost();
     }
-  }
-
-  // ── Storage helpers ──
-  function getPosts() {
-    try { return JSON.parse(localStorage.getItem('blog_posts') || '{}'); }
-    catch { return {}; }
-  }
-
-  function setPosts(posts) {
-    localStorage.setItem('blog_posts', JSON.stringify(posts));
-  }
-
-  // ── New post ──
-  function newPost() {
-    currentId = null;
-    document.getElementById('titleInput').value = '';
-    document.getElementById('editor').innerHTML = '';
-    document.getElementById('titleInput').focus();
-    renderList();
-  }
-
-  // ── Save ──
-  function savePost() {
-    const title = document.getElementById('titleInput').value.trim() || '제목 없음';
-    const content = document.getElementById('editor').innerHTML;
-
-    const posts = getPosts();
-    const id = currentId || ('post_' + Date.now());
-    currentId = id;
-
-    posts[id] = {
-      id,
-      title,
-      content,
-      date: new Date().toLocaleDateString('ko-KR', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })
-    };
-
-    setPosts(posts);
-    renderList();
-    showToast('저장되었습니다');
-  }
-
-  // ── Load ──
-  function loadPost(id) {
-    const posts = getPosts();
-    const post = posts[id];
-    if (!post) return;
-    currentId = id;
-    document.getElementById('titleInput').value = post.title;
-    document.getElementById('editor').innerHTML = post.content;
-    renderList();
-  }
-
-  // ── Delete ──
-  function deletePost(id, e) {
-    e.stopPropagation();
-    if (!confirm('이 글을 삭제할까요?')) return;
-    const posts = getPosts();
-    delete posts[id];
-    setPosts(posts);
-    if (currentId === id) newPost();
-    else renderList();
-    showToast('삭제되었습니다');
-  }
-
-  // ── Render list ──
-  function renderList() {
-    const posts = getPosts();
-    const list = document.getElementById('postList');
-    const keys = Object.keys(posts).reverse();
-
-    if (keys.length === 0) {
-      list.innerHTML = '<div class="no-posts">저장된 글이 없습니다</div>';
-      return;
-    }
-
-    list.innerHTML = keys.map(id => {
-      const p = posts[id];
-      const active = id === currentId ? 'active' : '';
-      return `
-        <div class="post-item ${active}" onclick="loadPost('${id}')">
-          <button class="post-item-delete" onclick="deletePost('${id}', event)">×</button>
-          <div class="post-item-title">${escHtml(p.title)}</div>
-          <div class="post-item-date">${p.date}</div>
-        </div>`;
-    }).join('');
   }
 
   // ── Toast ──
@@ -534,16 +530,12 @@
     t.textContent = msg;
     t.classList.add('show');
     clearTimeout(t._tid);
-    t._tid = setTimeout(() => t.classList.remove('show'), 2000);
+    t._tid = setTimeout(() => t.classList.remove('show'), 2200);
   }
 
-  // ── Util ──
   function escHtml(s) {
     return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   }
-
-  // ── Init ──
-  renderList();
 </script>
 </body>
 </html>
